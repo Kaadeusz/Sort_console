@@ -1,0 +1,84 @@
+class Program
+{
+  static void Main()
+  {
+    Strings s = new Strings();
+
+    s.GenerateRandoms(10, 10);
+    s.ShowString();
+
+
+    Console.ReadKey();
+
+    InsertionSort i = new InsertionSort();
+    i.Sort(s.randomString);
+    s.ShowString();
+  }
+}
+
+public class Strings
+{
+  public Strings() { 
+    
+  }
+
+  Random randomNumber = new Random();
+  public List<int> randomString = new List<int>();
+
+  public void GenerateRandoms(int stringLength, int maxValue)
+  {
+    for (int i = 0; i < stringLength; i++) { 
+      randomString.Add(randomNumber.Next(maxValue+1));
+    }
+  }
+
+  public void ShowString()
+  {
+    Console.WriteLine(string.Join(", ", randomString));
+  }
+}
+
+public class BubbleSort
+{
+  public void Sort(List<int> list)
+  {
+    int temporaryValue = 0;
+
+    for (int i = 0; i < list.Count(); i++) 
+    { 
+      for(int j = 0; j < list.Count() - 1; j++)
+      {
+        if (list[j] > list[j + 1])
+        {
+          temporaryValue = list[j + 1];
+          list[j + 1] = list[j];
+          list[j] = temporaryValue;
+        }
+      }
+    }
+  }
+}
+
+public class InsertionSort
+{
+  public void Sort(List<int> list)
+  {
+    int temporaryValue = 0;
+
+    for (int i = 0; i < list.Count() - 1; i++)
+    {
+      if (list[i] > list[i + 1])
+      {
+        for (int j = 0; j < i; j++)
+        {
+          if (list[i+1] < list[j])
+          {
+            temporaryValue = list[j];
+            list[j] = list[i + 1];
+            list[i + 1] = temporaryValue;
+          }
+        }
+      }
+    }
+  }
+}
