@@ -38,9 +38,9 @@ public class Strings
   }
 }
 
-public class BubbleSort
+public class BubbleSort : ISorting
 {
-  public void Sort(List<int> list)
+  public List<int> Sort(List<int> list)
   {
     int temporaryValue = 0;
 
@@ -56,12 +56,14 @@ public class BubbleSort
         }
       }
     }
+
+    return list;
   }
 }
 
-public class InsertionSort
+public class InsertionSort : ISorting
 {
-  public void Sort(List<int> list)
+  public List<int> Sort(List<int> list)
   {
     int temporaryValue = 0;
 
@@ -80,5 +82,57 @@ public class InsertionSort
         }
       }
     }
+
+    return list;
   }
+}
+
+public class QuickSort : ISorting
+{
+  public List<int> Sort(List<int> list)
+  {
+    int temporaryValue = 0;
+
+    int leftIndex = 0;
+    int rightIndex = 0;
+    int pivot = list[rightIndex];
+
+    for(int i = 0; i < )
+    {
+      if ()
+      {
+
+      }
+    }
+
+    return list;
+  }
+}
+
+public class Merge : ISorting //jeszcze nie czas...
+{
+  public List<int> Sort(List<int> list)
+  {
+    int temporaryValue = 0;
+    int middleOne = 0;
+
+    for (int i = 0; i <= list.Count(); i++)
+    {
+      List<int> temporaryList = new List<int>();
+
+      middleOne = list.Count / 2;
+
+      for(int j = 0; j < middleOne; j++)
+      {
+        temporaryList.Add(list[j]);
+      }
+    }
+
+    return list;
+  }
+}
+
+public interface ISorting
+{
+  public List<int> Sort(List<int> list);
 }
