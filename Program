@@ -9,6 +9,7 @@ class Program
     s.randomString.Add(6);
     s.randomString.Add(7);
     s.randomString.Add(5);
+    s.randomString.Add(4);
     s.ShowString();
 
 
@@ -17,6 +18,7 @@ class Program
     QuickSort q = new QuickSort();
     q.Sort(s.randomString);
     s.ShowString();
+
   }
 }
 
@@ -34,7 +36,7 @@ public class Strings
   {
     for (int i = 0; i < stringLength; i++)
     {
-      randomString.Add(randomNumber.Next(maxValue + 1));
+      randomString.Add(randomNumber.Next(maxValue+1));
     }
   }
 
@@ -98,8 +100,8 @@ public class QuickSort : ISorting
   public List<int> Sort(List<int> list)
   {
     int temporaryValue = 0;
-    List<int> temporartListLeft = new List<int>();
-    List<int> temporartListRight = new List<int>();
+    List<int> temporaryListLeft = new List<int>();
+    List<int> temporaryListRight = new List<int>();
 
     int leftIndex = 0;
     int rightIndex = list.Count-1;
@@ -113,11 +115,39 @@ public class QuickSort : ISorting
         list[i] = pivot;
         list[rightIndex] = temporaryValue;
 
+        for (int j = 0; j < i; j++)
+        {
+          temporaryListLeft.Add(list[j]);
+        }
+
+        for (int j = 0; j < list.Count; j++)
+        {
+          temporaryListRight.Add(list[j]);
+        }
+
         break;
       }
     }
 
-    Sort(temporartListLeft);
+    if(temporaryListLeft.Count > 1)
+    {
+      Sort(temporaryListLeft);
+
+      for (int i = 0; i < temporaryListLeft.Count; i++)
+      {
+        list[i] = temporaryListLeft[i];
+      }
+    }
+
+    if (temporaryListRight.Count > 1)
+    {
+      Sort(temporaryListRight);
+
+      for (int i = temporaryListLeft.Count; i < temporaryListRight.Count; i++)
+      {
+        list[i] = temporaryListRight[i];
+      }
+    }
 
     return list;
   }
