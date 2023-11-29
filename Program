@@ -10,12 +10,13 @@ class Program
         s.randomString.Add(7);
         s.randomString.Add(5);
         s.randomString.Add(4);
+        s.randomString.Add(3);
         s.ShowString();
 
 
         Console.ReadKey();
 
-        QuickSort sort = new QuickSort();
+        MergeSort sort = new MergeSort();
         sort.Sort(s.randomString);
         s.ShowString();
 
@@ -131,16 +132,34 @@ public class InsertionSort : ISorting
 
 }*/
 
-public class Merge : ISorting //jeszcze nie czas...
+public class MergeSort : ISorting //jeszcze nie czas...
 {
+
+    public List<int> ListDivide(List<int> list)
+    {
+        List<int> temporaryListLeft = new List<int>();
+        List<int> temporaryListRight = new List<int>();
+
+        for (int i = 0; i < list.Count/2; i++)
+        {
+            temporaryListLeft.Add(list[i]);
+        }
+
+        for (int i = list.Count/2; i < list.Count; i++)
+        {
+            temporaryListRight.Add(list[i]);
+        }
+
+        return list;
+    }
+
     public List<int> Sort(List<int> list)
     {
         int temporaryValue = 0;
-        int middleOne = 0;
 
-        for (int i = 0; i <= list.Count(); i++)
+        for(int i = 0; i < list.Count/2; i++)
         {
-
+            ListDivide(list);
         }
 
         return list;
